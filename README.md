@@ -1,11 +1,9 @@
-###  DATE: 
+# EXPERIMENT NO 05: INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
+###  DATE: 26-04-2024
+###  NAME: ASHWIN KUMAR K
+###  ROLL NO :212221223001
+###  DEPARTMENT: IT
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
-
-
-# EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
 
 ### AIM
 To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal .
@@ -74,10 +72,63 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
 
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+    delay(200);
+    Serial.println(pos);
+     if(pos>120)
+     {
+       digitalWrite(red,HIGH);
+       delay(200); // Wait for 1000 millisecond(s)
+       digitalWrite(red,LOW);
+       delay(200); // Wait for 1000 millisecond(s)
+     }
+  }
+  for(pos=180;pos>=0;pos-=5)
+  {
+    sr1.write(pos);
+    delay(200);
+    Serial.println(pos);
+    if(pos<=120)
+    {
+      digitalWrite(green,HIGH);
+      delay(200);
+      digitalWrite(green,LOW);
+      delay(200);
+  }
+  }
+}
 
+```
+### GRAPH:
+![ROBOEXP5GRAPH](https://github.com/AshwinAkash24/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979248/5e86f492-9c85-458e-be7e-1b425785485f)
 
+### SIMULATION OUTPUT:
+### OFF CONDITION:
+![ROBOEXP5OFF](https://github.com/AshwinAkash24/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979248/50853156-0355-4fe1-8387-3a3541645ef2)
+
+### ON CONDITION:
+![ROBOEXP5ON](https://github.com/AshwinAkash24/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979248/096acff7-8237-401e-972c-655ccf545bc0)
+
+### SCHEMATIC SIMULATION: 
+![ROBOEXP5SIMULT](https://github.com/AshwinAkash24/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/144979248/bed6afe1-ae9d-4467-a217-6ae34db1d3d5)
 
 
 
